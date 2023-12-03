@@ -1,0 +1,12 @@
+﻿@model LikeViewModel
+
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        @Html.DisplayFor(m => m.Stars)
+
+        @Model.Voter
+        <span class="pull-right">@((int)(DateTime.Now - Model.CreationDate).TotalDays == 0 ? "today" : ((int)(DateTime.Now - Model.CreationDate).TotalDays).ToString() + " days ago")</span>
+        <p>@Model.Comment</p>
+    </div>
+</div>

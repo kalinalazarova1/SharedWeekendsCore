@@ -1,0 +1,21 @@
+﻿@model IEnumerable<CategoryViewModel>
+
+<div class="list-group">
+    <a data-ajax="true"
+       data-ajax-update="#main"
+       data-ajax-mode="replace"
+       href='@Url.Action("FilterByCategory", "Search", new { id = 0, page = 0 })'
+       class="list-group-item">
+        All weekends
+    </a>
+    @foreach (var item in Model)
+    {
+        <a data-ajax="true"
+           data-ajax-update="#main"
+           data-ajax-mode="replace"
+           href='@Url.Action("FilterByCategory", "Search", new { id = item.Id, page = 0 })'
+           class="list-group-item">
+            @item.Name
+        </a>
+    }
+</div>

@@ -1,0 +1,25 @@
+﻿@model IList<SharedWeekends.MVC.ViewModels.WeekendViewModel>
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            @Html.DisplayFor(m => m[i].PictureUrl)
+            <div class="caption">
+                <div class="col-md-12">
+                    <h4>
+                        <a href="~/Details/Index/@Model[i].Id">@Model[i].Title</a>
+                    </h4>
+                    <p>@Html.DisplayFor(m => m[i].Description)</p>
+                </div>
+
+            </div>
+            <div class="ratings">
+                @Html.DisplayFor(m => m[i].LikesCount)
+                @Html.DisplayFor(m => m[i].Rating)
+            </div>
+        </div>
+    </div>
+}
+
+

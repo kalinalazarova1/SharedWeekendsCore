@@ -1,0 +1,10 @@
+﻿@model WeekendViewModel
+<div class="blog-entry col-3">
+	<a href="~/Details/Index/@Model.Id" class="img-link">
+		@Html.DisplayFor(m => m.PictureUrl)
+	</a>
+	<span class="date">@Model.CreationDate?.ToString("MMMM dd, yyyy")</span>
+	<h2><a href="~/Details/Index/@Model.Id">@Model.Title</a></h2>
+	<p>@Html.DisplayFor(m => m.Description)</p>
+	<p><a class="btn btn-sm btn-outline-primary" href="~/Details/Index/@Model.Id">Read More</a></p>
+</div>

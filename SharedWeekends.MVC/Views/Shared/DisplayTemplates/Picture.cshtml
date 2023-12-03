@@ -1,0 +1,9 @@
+﻿@model String
+@if (Model != null)
+{
+    <img src="@Model" class="img-fluid" alt="Photo">
+}
+else
+{
+    <img src="~/img/default.jpg" class="img-fluid" alt="Photo" />
+}

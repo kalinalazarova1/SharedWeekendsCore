@@ -1,0 +1,33 @@
+﻿@model LikeViewModel
+
+<form asp-action="CreateLike" asp-controller="Details" method="POST" data-ajax="true" data-ajax-update="allReviews" data-ajax-mode="after" data-ajax-success="hideOnSubmit" class="form-horizontal" id="createLikeForm">
+    <div class="form-group">
+        <label for="stars" class="form-label col-md-2">Stars</label>
+        <div class="col-10">
+            <div class="float-left">
+                @for (int i = 0; i < 5; i++)
+                {
+                    <span class="fa-regular fa-star" data-rating="@(i + 1)"></span>
+                }
+                <input type="hidden" name="Stars" id="rating-value" value="0" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Comment, "Comment", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-lg-10">
+            @Html.TextAreaFor(m => m.Comment, 3, 20, new { @class = "form-control" })
+            <input type="hidden" name="WeekendId" value="@TempData["Id"]" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+            <button class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="postReview">Submit</button>
+        </div>
+    </div>
+</form>
+@section scripts
+{
+    <script src="~/js/rating.js"></script>
+}

@@ -1,0 +1,54 @@
+﻿@model SharedWeekends.MVC.ViewModels.UserViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    User Profile.
+</h3>
+<div class="container">
+    <div class="col-md-3">
+        <ul class="list-group text-center">
+            <li class="list-group-item">
+                @Html.DisplayFor(m => m.Avatar)
+            </li>
+            <li class="list-group-item">
+                @Html.DisplayFor(m => m.UserName)
+            </li>
+            <li class="list-group-item">
+                @Html.DisplayFor(m => m.Rating)
+            </li>
+        </ul>
+
+        @using (Html.BeginForm("ChangeAvatar", "Profile", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(m => m.Avatar, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    <input type="file" class="form-control" name="AvatarFile" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary btn-sm" value="Change Avatar" />
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-9">
+        <ul class="nav nav-pills">
+            <li class="nav-item active"><a href="#myWeekends" data-toggle-pill="tab">My Shared Weekends</a></li>
+            <li class="nav-item"><a href="#myReviews" data-toggle-pill="tab">My Reviews</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane container active row" id="myWeekends">
+                <vc:my-weekends></vc:my-weekends>
+            </div>
+            <div class="tab-pane container fade" id="myReviews">
+                <vc:my-reviews></vc:my-reviews>
+            </div>
+        </div>
+    </div>
+</div>

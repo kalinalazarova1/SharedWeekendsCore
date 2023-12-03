@@ -1,0 +1,12 @@
+﻿@model Int32
+<span>
+    @for (int i = 0; i < (int)Model; i++)
+    {
+        <i class="fa-solid fa-star"></i>
+    }
+    @for (int i = 0; i < 5 - (int)Model; i++)
+    {
+        <i class="fa-regular fa-star"></i>
+    }
+</span>
+

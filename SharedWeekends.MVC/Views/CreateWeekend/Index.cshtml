@@ -1,0 +1,53 @@
+﻿@model WeekendViewModel
+@{
+    ViewBag.Title = "Share Your Weekend";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Index" method="post" role="form" class="form-horizontal">
+    <h2 class="my-5">Share your weekend.</h2>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="col-6">
+        <div class="row g-2">
+            <div class="col-12">
+                <label asp-for="Title" class="form-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="col-12">
+                <label asp-for="Description" class="form-label"></label>
+                <input asp-for="Description" class="form-control"/>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="col-12">
+                <label asp-for="PictureUrl" class="form-label"></label>
+                <input asp-for="PictureUrl" class="form-control" />
+                <span asp-validation-for="PictureUrl" class="text-danger"></span>
+            </div>
+            @* <div class="col-12">
+                <div class="form-label">Map</div>
+                <div class="col-md-6 form-control" data-title="" data-lat="42.7" data-lon="23.32" id="map"></div>
+            </div> *@
+            <div class="col-12">
+                <label asp-for="Longitude" class="form-label"></label>
+                <input asp-for="Longitude" class="form-control" />
+                <span asp-validation-for="Longitude" class="text-danger"></span>
+            </div>
+            <div class="col-12">
+                <label asp-for="Lattitude" class="form-label"></label>
+                <input asp-for="Lattitude" class="form-control" />
+                <span asp-validation-for="Lattitude" class="text-danger"></span>
+            </div>
+            <vc:categories-dropdown></vc:categories-dropdown>
+        </div>
+
+        <div class="mt-2">
+            <div class="col-md-offset-2 col-md-5">
+                <input type="submit" class="btn btn-secondary" value="Submit" />
+            </div>
+        </div>
+    </div>
+</form>
+

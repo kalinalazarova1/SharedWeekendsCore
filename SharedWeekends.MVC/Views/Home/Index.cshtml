@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mt-1" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Weather in Kenilworth</h5>
+                    <p class="card-text" id="weather"></p>
+                </div>
+            </div>
+            <div class="card mt-1" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Top Rated Users</h5>
+                    <p class="card-text" id="top-users">
+                        <vc:top-users></vc:top-users>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <partial name="_Carousel" />
+        </div>
+        <div class="mt-5 col-md-12 section posts-entry posts-entry-sm bg-light">
+            <h2>Most Popular Weekend Stories</h2>
+            <vc:top-weekends></vc:top-weekends>
+        </div>
+        <div class="col-md-12 section posts-entry posts-entry-sm bg-light">
+            <h2>Latest Weekend Stories</h2>
+            <vc:latest-weekends></vc:latest-weekends>
+        </div>
+    </div>
+</div>
+
+@section weather{
+    <script src="~/js/weather.js"></script>
+}

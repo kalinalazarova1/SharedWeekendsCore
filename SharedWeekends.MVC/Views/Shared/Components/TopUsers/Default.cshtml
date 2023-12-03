@@ -1,0 +1,6 @@
+﻿@model IList<UserViewModel>
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    <i>@(i + 1). @Model[i].UserName <img width="10" src="~/img/goals.png" alt="" /> @Model[i].Rating point(s)</i><br>
+}

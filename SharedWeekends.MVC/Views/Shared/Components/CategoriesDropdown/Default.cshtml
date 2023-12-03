@@ -1,0 +1,25 @@
+﻿@model IEnumerable<CategoryViewModel>
+
+@{
+    var categories = new List<SelectListItem>();
+    if (ViewBag.Selected != null)
+    {
+        categories.Add(new SelectListItem() { Value = Model.FirstOrDefault(c => c.Name == ViewBag.Selected)?.Id.ToString(), Text = ViewBag.Selected });
+        
+    }
+    
+    foreach (var category in Model)
+    {
+        if (category.Name != ViewBag.Selected)
+        {
+            categories.Add(new SelectListItem() { Text = category.Name, Value = category.Id.ToString() });    
+        }
+    }
+}
+
+<div class="form-group">
+    <label for="CategoriesDropDown" class="col-lg-2 control-label">Categories</label>
+    <div class="col-lg-10">
+        @Html.DropDownList("Category", categories, new { @class = "form-control" })
+    </div>
+</div>

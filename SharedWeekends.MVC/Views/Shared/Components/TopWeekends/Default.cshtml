@@ -1,0 +1,8 @@
+﻿@model IList<WeekendViewModel>
+
+<div class="row posts-entry">
+    @for (int j = 0; j < Model.Count(); j++)
+    {
+        @await Html.PartialAsync("_Weekend", Model[j])
+    }
+</div>

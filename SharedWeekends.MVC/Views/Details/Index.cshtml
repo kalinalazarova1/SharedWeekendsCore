@@ -1,0 +1,51 @@
+﻿@model WeekendViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Weekend "@Model.Title" <em>by @Model.Author</em>.</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-4">@Html.DisplayFor(m => m.PictureUrl)</div>
+        <div class="col-8">
+            <h4>
+                &nbsp;
+            </h4>
+            <div class="col-6">
+                <h4>
+                    Category: @Model.Category
+                </h4>
+                <div class="row">
+                    @* <div class="col-6" data-title="@Model.Title" data-lat="@Model.Lattitude" data-lon="@Model.Longitude" id="location-map"></div> *@
+                    <p style="text-align:justify">@Model.Description</p>
+                    <p><em>Published: @Html.DisplayFor(model => model.CreationDate)</em></p>
+                </div>
+                <div class="ratings">
+                    @Model.Rating @Html.DisplayFor(m => m.Rating) @Html.DisplayFor(m => m.LikesCount)
+                </div>
+            </div>
+        </div>
+    </div>
+      
+    <div class="card bg-light">
+        <div class="card-body text-right">
+            @if (!(bool)ViewBag.HasLikedThis)
+            {
+                <button id="review" class="btn btn-success float-end">Leave a Review</button>
+            }
+            <div id="review-form">
+                <vc:create-like-form id="Model.Id"></vc:create-like-form>
+            </div>
+        </div>
+        <div class="p-2" id="allReviews">
+            <vc:weekend-likes id="Model.Id"></vc:weekend-likes>
+        </div>
+    </div>
+</div>
+@section scripts {
+    @* <script src="~/js/map.js"></script> *@
+    <script src="~/js/rating.js"></script>
+}
+
+

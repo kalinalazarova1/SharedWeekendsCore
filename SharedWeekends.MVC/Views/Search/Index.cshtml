@@ -1,0 +1,56 @@
+﻿@model WeekendViewModel
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search Weekends.</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <vc:categories-filter></vc:categories-filter>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <ul class="pager">
+                <li>
+                    <a data-ajax="true"
+                       data-ajax-update="#main"
+                       data-ajax-mode="replace"
+                       href='@Url.Action("FilterByCategory", "Search", new { page = -1 })'
+                       class="list-group-item">
+                        Previous
+                    </a>
+                </li>
+                <li>
+                    <a data-ajax="true"
+                       data-ajax-update="#main"
+                       data-ajax-mode="replace"
+                       href='@Url.Action("FilterByCategory", "Search", new { page = 1 })'
+                       class="list-group-item">
+                        Next
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9" id="main">
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                url: '@Url.Action("FilterByCategory")',
+                type: 'GET',
+                cache: false,
+                data: { id: 0, page: 0 }
+            }).done(function (result) {
+                $('#main').html(result);
+            });
+        });
+    </script>
+}

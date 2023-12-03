@@ -1,0 +1,17 @@
+﻿@model IList<LikeViewModel>
+@{var reviewsCount = Model.Count;}
+@foreach(var item in Model)
+{
+    reviewsCount--;
+    <div class="row">
+        <div class="col-12">
+            @Html.DisplayFor(m => item.Stars) by @item.Voter
+            <span>@((int)(DateTime.Now - item.CreationDate).TotalDays == 0 ? "today" : ((int)(DateTime.Now - item.CreationDate).TotalDays).ToString() + " days ago")</span>
+            <div>@item.Comment</div>
+        </div>
+    </div>
+    @if(reviewsCount != 0)
+    {
+        <hr>
+    }
+}
